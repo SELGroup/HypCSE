@@ -1,0 +1,10 @@
+numpy==1.24.3
+networkx==3.1
+numba==0.60.0
+scipy==1.10.1
+scikit-learn==1.4.2
+pytorch==2.1.2
+pytorch-scatter==2.1.2
+pyg==2.5.2
+pynndescent==0.5.13
+cython==0.29.30
