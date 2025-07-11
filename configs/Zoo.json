@@ -8,6 +8,7 @@
     "w_decay": 5e-4,
     "embed_dim": 16,
     "hidden_dim_enc": 256,
+    "dropout": 0.2,
     "t2": 1000.0,
     "r2": 2.0,
     "gsl_k": 15,

@@ -5,7 +5,7 @@
     "exp_iters": 5,
     "epochs": 200,
     "lr": 3e-3,
-    "w_decay": 3e-4,
+    "w_decay": 5e-4,
     "embed_dim": 128,
     "hidden_dim_enc": 64,
     "dropout": 0.2,
