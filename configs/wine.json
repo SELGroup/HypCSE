@@ -11,7 +11,6 @@
     "dropout": 0.2,
     "t2": 1000.0,
     "r2": 2.0,
-    "sparse": true,
     "gsl_k": 20,
     "type_learner": "gnn",
     "sim_function": "cosine",
@@ -25,5 +24,6 @@
     "weight_loss_se": 1.0,
     "weight_loss_contrastive": 1.0,
     "weight_loss_dist0": 1.0,
-    "evaluate_adj": "data_adj"
+    "evaluate_adj": "data_adj",
+    "eval_complete_graph": true
 }
