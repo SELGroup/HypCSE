@@ -67,15 +67,21 @@ parser.add_argument('--decoding_algo', type=str, default=None)
 parser.add_argument('--batch_size', type=int, default=2048)
 parser.add_argument('--n_seeds', type=int, default=10)
 
+parser.add_argument('--use_gpu', type=bool, default=True)
+parser.add_argument('--knn_k', type=int, default=10)
+parser.add_argument('--nonlin', type=str, default='relu')
+parser.add_argument('--eval_batch', type=bool, default=False)
 
 
 configs = parser.parse_args()
+
 
 configs_dict = vars(configs)
 with open(f'./configs/{configs.dataset}.json', 'rt') as f:
     configs_dict.update(json.load(f))
 configs = DotDict(configs_dict)
 f.close()
+configs["version"] = 'run'
 
 log_path = f"./results/{configs.version}/{configs.dataset}.log"
 configs.log_path = log_path

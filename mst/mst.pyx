@@ -28,7 +28,7 @@ def mst(double[:,:] dists, int n):
         Edges in the MST in sorted order; indices, lengths
     """
 
-    ij = np.empty((n - 1, 2), dtype=np.int)
+    ij = np.empty((n - 1, 2), dtype=int)
     cdef long[:, :] Z = ij
     l = np.empty(n-1)
     cdef double[:] l_ = l

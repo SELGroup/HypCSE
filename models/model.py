@@ -1,4 +1,4 @@
-#  reload the HYPCSE model to ensure it being correct.
+
 import copy
 
 import torch
