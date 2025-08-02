@@ -2,8 +2,11 @@
 
 import time
 
+import networkx as nx
 import numpy as np
 import torch
+from sklearn.cluster import AgglomerativeClustering
+from sklearn.neighbors import kneighbors_graph
 from tqdm import tqdm
 
 from mst import mst
@@ -66,3 +69,22 @@ def nn_merge_uf_fast_np(xs, S, partition_ratio=None, verbose=False):
     uf = unionfind.UnionFind(n)
     uf.merge(ij)
     return uf.tree
+
+def fast_tree_decoding(leaves_embeddings, dist_fn, n_clusters, n_neighbors=100):
+    n_instance = leaves_embeddings.shape[0]
+    n_neighbors = min(n_neighbors, n_instance)
+    # print(type(leaves_embeddings))
+    # exit(0)
+    knn_graph = kneighbors_graph(leaves_embeddings, n_neighbors=n_neighbors, include_self=False, metric=dist_fn)
+    model = AgglomerativeClustering(linkage='single', connectivity=knn_graph, n_clusters=n_clusters, compute_full_tree=True)
+    model.fit(leaves_embeddings)
+    children_ = model.children_
+    tree = nx.DiGraph()
+    for i in range(0, n_instance):
+        tree.add_node(i)
+    for i in range(children_.shape[0]):
+        parent = i + n_instance
+        tree.add_node(parent)
+        tree.add_edge(parent, children_[i][0])
+        tree.add_edge(parent, children_[i][1])
+    return tree
