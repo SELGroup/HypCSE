@@ -10,7 +10,7 @@ from geoopt.optim import RiemannianAdam
 import numpy as np
 from utils.metrics import dasgupta_cost, se_cost, den_purity_recursive, den_purity, se_cost_iterative
 import random
-from gsl.gsl_utils import torch_sparse_eye, normalize, get_feat_mask, split_batch, contrastive_loss_hyperbolic
+from gsl.gsl_utils import torch_sparse_eye, normalize, get_feat_mask, contrastive_loss_hyperbolic
 from gsl.graph_learners import GNN_learner, MLP_learner, GNN_learner_adj
 import traceback
 from torch_geometric.loader import NeighborLoader
